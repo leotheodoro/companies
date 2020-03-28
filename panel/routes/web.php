@@ -23,6 +23,11 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('companies', 'CompanyController');
     Route::resource('employees', 'EmployeeController');
+
+    Route::group(['prefix' => 'api'], function() {
+        Route::get('companies', 'Api\\CompanyController@index');
+        Route::get('companies/{id}/employees', 'Api\\CompanyController@employees');
+    });
 });
 
 Auth::routes();
