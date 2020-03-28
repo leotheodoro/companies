@@ -23,7 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->string('address')->nullable();
             $table->string('neighborhood')->nullable();
             $table->string('city')->nullable();
-            $table->string('uf')->nullable();
+            $table->string('uf', 2)->nullable();
             $table->unsignedBigInteger('company_id');
 
             $table->foreign('company_id')->references('id')->on('companies');
