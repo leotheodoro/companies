@@ -27,7 +27,7 @@ class UpdateEmployeeFormRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'nullable|max:14',
-            'cpf' => 'required|max:14|unique:employees,cpf,'.$id.',id',
+            'cpf' => 'required|max:14|unique:employees,cpf,'.$this->employee.',id',
             'cep' => 'required|max:9',
             'address' => 'nullable',
             'neighborhood' => 'nullable',

@@ -18,11 +18,11 @@
                                 <input type="hidden" name="_method" value="PUT">
                                 <div class="form-group">
                                     <label for="name">Nome</label>
-                                    <input type="text" name="name" id="website" class="form-control" placeholder="Digite o nome da empresa" value="{{$company->name}}">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Digite o nome da empresa" value="{{$company->name}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="text" name="email" id="website" class="form-control" placeholder="Digite o e-mail da empresa" value="{{$company->email}}">
+                                    <input type="text" name="email" id="email" class="form-control" placeholder="Digite o e-mail da empresa" value="{{$company->email}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="website">Website</label>
@@ -33,7 +33,7 @@
                                     <input type="file" name="image" id="image" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Salvar</button>
                                 </div>
                             </form>
                         </div>

@@ -17,11 +17,11 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Nome</label>
-                                    <input type="text" name="name" id="website" class="form-control" placeholder="Digite o nome da empresa" value="{{old('name')}}">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Digite o nome da empresa" value="{{old('name')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="text" name="email" id="website" class="form-control" placeholder="Digite o e-mail da empresa" value="{{old('email')}}">
+                                    <input type="text" name="email" id="email" class="form-control" placeholder="Digite o e-mail da empresa" value="{{old('email')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="website">Website</label>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Empresas</div>
+                <div class="card-header">Funcionários</div>
 
                 <div class="card-body">
                     @include('helpers.errors')
@@ -13,7 +13,7 @@
 
                     <div class="row">
                         <div class="col-md">
-                            <a href="{{route('companies.create')}}" class="btn btn-primary btn-block">Criar nova empresa</a>
+                            <a href="{{route('employees.create')}}" class="btn btn-primary btn-block">Criar novo funcionário</a>
                         </div>
                     </div>
                     <br>
@@ -24,26 +24,26 @@
                                     <tr>
                                     <th scope="col">Nome</th>
                                     <th scope="col">E-mail</th>
-                                    <th scope="col">Website</th>
+                                    <th scope="col">CPF</th>
                                     <th scope="col">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($companies as $company)
+                                    @foreach($employees as $employee)
                                     <tr>
-                                        <td>{{$company->name}}</td>
-                                        <td>{{$company->email}}</td>
-                                        <td>{{$company->website}}</td>
+                                        <td>{{$employee->name}}</td>
+                                        <td>{{$employee->email}}</td>
+                                        <td>{{$employee->cpf}}</td>
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <a href="{{route('companies.show', ['company' => $company->id])}}" class="btn btn-info">Ver</a>
+                                                    <a href="{{route('employees.show', ['employee' => $employee->id])}}" class="btn btn-info">Ver</a>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <a href="{{route('companies.edit', ['company' => $company->id])}}" class="btn btn-primary">Editar</a>
+                                                    <a href="{{route('employees.edit', ['employee' => $employee->id])}}" class="btn btn-primary">Editar</a>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <form action="{{route('companies.destroy', ['company' => $company->id])}}" method="POST">
+                                                    <form action="{{route('employees.destroy', ['employee' => $employee->id])}}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-danger">Excluir</button>
@@ -56,7 +56,7 @@
                                     <tr>
                                 </tbody>
                             </table>
-                            {{ $companies->links() }}
+                            {{ $employees->links() }}
                         </div>
                     </div>
                 </div>

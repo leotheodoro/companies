@@ -39,8 +39,8 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyFormRequest $request)
     {
+        $data = $request->except('_token');
         try {
-            $data = $request->except('_token');
             $company = Company::create($data);
 
             if(!$company) {

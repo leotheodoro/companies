@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreEmployeeFormRequest;
+use App\Http\Requests\UpdateEmployeeFormRequest;
+use App\Models\Employee;
+use App\Models\Company;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +17,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::paginate(10);
+
+        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -23,7 +29,9 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Company::all();
+
+        return view('employees.create', compact('companies'));
     }
 
     /**
@@ -32,9 +40,21 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployeeFormRequest $request)
     {
-        //
+        $data = $request->except('_token');
+        try {
+            $employee = Employee::create($data);
+
+            if(!$employee) {
+                return redirect()->back()->with('error', 'Não foi possível cadastrar o funcionário.');
+            }
+
+            return redirect()->route('employees.index')->with('success', 'Funcionário cadastrado com sucesso.');
+        } catch(\Exception $e) {
+            dd($e);
+            return redirect()->back()->with('error', 'Não foi possível cadastrar o funcionário.');
+        }
     }
 
     /**
@@ -45,7 +65,9 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::where('id', $id)->with('company')->first();
+
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -56,7 +78,10 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::where('id', $id)->with('company')->first();
+        $companies = Company::all();
+
+        return view('employees.edit', compact('employee', 'companies'));
     }
 
     /**
@@ -66,9 +91,17 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEmployeeFormRequest $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        try {
+            $employee = Employee::find($id);
+            $employee->update($data);
+
+            return redirect()->route('employees.index')->with('success', 'Funcionário atualizado com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Não foi possível atualizar o funcionário.');
+        }
     }
 
     /**
@@ -79,6 +112,13 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $employee = Employee::find($id);
+            $employee->delete();
+
+            return redirect()->route('employees.index')->with('success', 'Funcionário deletado com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Não foi possível deletar o funcionário.');
+        }
     }
 }
