@@ -17,7 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();

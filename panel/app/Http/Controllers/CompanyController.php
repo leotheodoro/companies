@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCompanyFormRequest;
+use App\Http\Requests\UpdateCompanyFormRequest;
 use App\Models\Company;
 
 class CompanyController extends Controller
@@ -33,9 +35,20 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCompanyFormRequest $request)
     {
-        //
+        try {
+            $data = $request->except('_token');
+            $company = Company::create($data);
+
+            if(!$company) {
+                return redirect()->back()->with('error', 'Não foi possível cadastrar a empresa no momento.');
+            }
+
+            return redirect()->route('companies.index')->with('success', 'Empresa cadastrada com sucesso.');
+        } catch(\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -67,7 +80,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCompanyFormRequest $request, $id)
     {
         //
     }

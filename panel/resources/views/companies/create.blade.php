@@ -8,15 +8,13 @@
                 <div class="card-header">Empresas</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @include('helpers.errors')
+                    @include('helpers.success')
 
                     <div class="row">
                         <div class="col-md">
                             <form action="{{route('companies.store')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label for="name">Nome</label>
                                     <input type="text" name="name" id="website" class="form-control" placeholder="Digite o nome da empresa" value="{{old('name')}}">

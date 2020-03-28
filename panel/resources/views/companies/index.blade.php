@@ -8,11 +8,8 @@
                 <div class="card-header">Empresas</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @include('helpers.errors')
+                    @include('helpers.success')
 
                     <div class="row">
                         <div class="col-md">
