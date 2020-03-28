@@ -37,13 +37,13 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{{route('companies.show', ['company' => '1'])}}" class="btn btn-info">Ver</a>
+                                                    <a href="{{route('companies.show', ['company' => $company->id])}}" class="btn btn-info">Ver</a>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="{{route('companies.edit', ['company' => '1'])}}" class="btn btn-primary">Editar</a>
+                                                    <a href="{{route('companies.edit', ['company' => $company->id])}}" class="btn btn-primary">Editar</a>
                                                 </div>
                                                 <div class="col">
-                                                    <form action="{{route('companies.destroy', ['company' => '1'])}}" method="POST">
+                                                    <form action="{{route('companies.destroy', ['company' => $company->id])}}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-danger">Excluir</button>

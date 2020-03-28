@@ -44,12 +44,12 @@ class CompanyController extends Controller
             $company = Company::create($data);
 
             if(!$company) {
-                return redirect()->back()->with('error', 'Não foi possível cadastrar a empresa no momento.');
+                return redirect()->back()->with('error', 'Não foi possível cadastrar a empresa.');
             }
 
             return redirect()->route('companies.index')->with('success', 'Empresa cadastrada com sucesso.');
         } catch(\Exception $e) {
-            dd($e);
+            return redirect()->back()->with('error', 'Não foi possível atualizar a empresa.');
         }
     }
 
@@ -61,7 +61,9 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::find($id);
+
+        return view('companies.show', compact('company'));
     }
 
     /**
@@ -72,7 +74,9 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company::find($id);
+
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -84,7 +88,15 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyFormRequest $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        try {
+            $company = Company::find($id);
+            $company->update($data);
+
+            return redirect()->route('companies.index')->with('success', 'Empresa atualizada com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Não foi possível atualizar a empresa.');
+        }
     }
 
     /**
@@ -95,6 +107,13 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $company = Company::find($id);
+            $company->delete();
+
+            return redirect()->route('companies.index')->with('success', 'Empresa deletada com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Não foi possível deletar a empresa.');
+        }
     }
 }
