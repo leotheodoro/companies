@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreCompanyFormRequest;
 use App\Http\Requests\UpdateCompanyFormRequest;
 use App\Models\Company;
@@ -40,6 +41,18 @@ class CompanyController extends Controller
     public function store(StoreCompanyFormRequest $request)
     {
         $data = $request->except('_token');
+
+        // Upload de foto
+        if($request->hasFile('image')) {
+            $url = env('UPLOAD_URL', 'http://10.10.10.7:2222/upload.php');
+            $image = $request->file('image');
+            $response = Http::attach('image', file_get_contents($image), $image->getClientOriginalName())
+                ->post($url);
+
+            dd($response->json());
+        }
+        dd('oi');
+
         try {
             $company = Company::create($data);
 
