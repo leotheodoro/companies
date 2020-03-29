@@ -49,13 +49,17 @@ admin
 ## Perguntas 
 
 **Se você fosse responsável por um dos datacenters do Google, e seu chefe lhe dissesse que sua unidade está consumindo muita energia elétrica. O que você faria? Justifique sua resposta.**
+
 Procuraria soluções para evitar esse consumo excessivo, através de otimização de códigos e scripts, analisaria também a infraestrutura do servidor e verificaria se está havendo algum gargalo que possa ser resolvido. Procuraria formas inovadoras de automatizar os datacenters. Limitar no consumo de banda larga também seria uma opção.
 
 **Qual característica de personalidade conflita com você?**
+
 Tenho muita vontade de aprender muitas coisas, e isso gera um conflito que gera indecisão sobre o que estudar e as vezes me faz ficar estagnado, isso faz com que eu tenha um planejamento e uma clareza dos meus objetivos profissionais para que consiga focar no essencial.
 
 **Como você lidaria com um colega que consistente evitar chamar para si mais trabalho?**
+
 Tentaria entender o motivo dele fazer isso, depois tentaria formas indiretas para fazer com que ele fosse mais produtivo e conseguisse trabalhar de forma mais eficaz. Faria isso através de conversas e exemplos.
 
 **Alguma vez você já motivou alguém a terminar uma tarefa? Como você fez?**
+
 Sim, eu tive que mostrar com clareza o big picture da situação e como seria o final do projeto, isso fez com que ele ficasse motivado a terminar o projeto, porque já imaginava o resultado final.
