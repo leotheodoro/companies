@@ -49,9 +49,10 @@ class CompanyController extends Controller
             $response = Http::attach('image', file_get_contents($image), $image->getClientOriginalName())
                 ->post($url);
 
-            dd($response->json());
+            $result = $response->json();
+
+            $data['image'] = $result['name'];
         }
-        dd('oi');
 
         try {
             $company = Company::create($data);

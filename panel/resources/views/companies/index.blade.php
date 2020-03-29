@@ -34,7 +34,7 @@
                                 <tbody>
                                     @foreach($companies as $company)
                                     <tr>
-                                        <td>foto</td>
+                                        <td><img src="{{$company->image ? $company->image : 'https://placehold.co/70x70'}}" width="70" alt="{{$company->name}}"></td>
                                         <td>{{$company->name}}</td>
                                         <td>{{$company->email}}</td>
                                         <td>{{$company->website}}</td>
