@@ -103,6 +103,19 @@ class CompanyController extends Controller
     public function update(UpdateCompanyFormRequest $request, $id)
     {
         $data = $request->except('_token');
+
+        // Upload de foto
+        if($request->hasFile('image')) {
+            $url = env('UPLOAD_URL', 'http://10.10.10.7:2222/upload.php');
+            $image = $request->file('image');
+            $response = Http::attach('image', file_get_contents($image), $image->getClientOriginalName())
+                ->post($url);
+
+            $result = $response->json();
+
+            $data['image'] = $result['name'];
+        }
+
         try {
             $company = Company::find($id);
             $company->update($data);
