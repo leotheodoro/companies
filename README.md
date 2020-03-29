@@ -7,7 +7,7 @@ Execute a api do upload, entre na pasta ```upload``` e digite o seguinte comando
 php -S ${IP_DA_SUA_MAQUINA}:2222
 ```
 
-Obs: A porta padrão é ```2222``` mas pode mudar para uma da sua escolha.
+Obs: A porta padrão é ```2222``` mas pode mudar para uma de sua escolha.
 Obs: É de extrema importância que seja o ipv4 da sua máquina, para que a api do Laravel consiga acessar. Para obter o ip da sua máquina, digite ```ipconfig``` e copie o endereço ipv4.
 
 Segundo, você precisará configurar as variáveis de ambiente do projeto, no arquivo ```.env``` do Laravel, coloque as seguintes variáveis:
@@ -39,3 +39,9 @@ php artisan migrate --seed
 ```
 
 Após todos os passos serem executados, acesse ```localhost``` e o sistema deve aparecer normalmente.
+
+Usuário e senha para acesso admin é:
+```
+admin@admin.com
+admin
+```
