@@ -52,7 +52,6 @@ class EmployeeController extends Controller
 
             return redirect()->route('employees.index')->with('success', 'Funcionário cadastrado com sucesso.');
         } catch(\Exception $e) {
-            dd($e);
             return redirect()->back()->with('error', 'Não foi possível cadastrar o funcionário.');
         }
     }
