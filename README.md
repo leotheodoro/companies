@@ -45,3 +45,13 @@ Usuário e senha para acesso admin é:
 admin@admin.com
 admin
 ```
+
+## Perguntas 
+
+**Se você fosse responsável por um dos datacenters do Google, e seu chefe lhe dissesse que sua unidade está consumindo muita energia elétrica. O que você faria? Justifique sua resposta.**
+
+**Qual característica de personalidade conflita com você?**
+
+**Como você lidaria com um colega que consistente evitar chamar para si mais trabalho?**
+
+**Alguma vez você já motivou alguém a terminar uma tarefa? Como você fez?**
