@@ -45,11 +45,7 @@
                                             <a href="{{route('employees.edit', ['employee' => $employee->id])}}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
                                         </td>
                                         <td>
-                                            <form action="{{route('employees.destroy', ['employee' => $employee->id])}}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                            </form>
+                                            <button onClick="handleModalDelete('{{route('employees.destroy', ['employee' => $employee->id])}}', '#deleteModal')" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -61,6 +57,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Deletar funcionário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Você tem certeza que deseja deletar esse funcionário?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <form id="formDelete" action="" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger">Sim, desejo deletar</button>
+            </form>
+        </div>
         </div>
     </div>
 </div>
