@@ -25,7 +25,10 @@
                                     <th scope="col">Nome</th>
                                     <th scope="col">E-mail</th>
                                     <th scope="col">CPF</th>
-                                    <th scope="col">Ações</th>
+                                    <th scope="col">Empresa</th>
+                                    <th scope="col">Ver</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Excluir</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,22 +37,19 @@
                                         <td>{{$employee->name}}</td>
                                         <td>{{$employee->email}}</td>
                                         <td>{{$employee->cpf}}</td>
+                                        <td>{{$employee->company->name}}</td>
                                         <td>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <a href="{{route('employees.show', ['employee' => $employee->id])}}" class="btn btn-info">Ver</a>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <a href="{{route('employees.edit', ['employee' => $employee->id])}}" class="btn btn-primary">Editar</a>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <form action="{{route('employees.destroy', ['employee' => $employee->id])}}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                                    </form>
-                                                </div>
-                                            </div>
+                                            <a href="{{route('employees.show', ['employee' => $employee->id])}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('employees.edit', ['employee' => $employee->id])}}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                        </td>
+                                        <td>
+                                            <form action="{{route('employees.destroy', ['employee' => $employee->id])}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

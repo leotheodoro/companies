@@ -25,6 +25,14 @@
                                 <label for="website"><b>Website</b></label>
                                 <p>{{$company->website}}</p>
                             </div>
+                            <div class="form-group">
+                                <label for="website"><b>Funcionários</b></label>
+                                <ul class="list-group">
+                                    @foreach($company->employees as $employee)
+                                        <li class="list-group-item">{{$employee->name}} <a href="{{route('employees.show', ['employee' => $employee->id])}}" class="btn btn-sm btn-primary float-right"><i class="fas fa-eye"></i></a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
